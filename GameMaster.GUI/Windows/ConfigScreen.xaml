@@ -1,0 +1,121 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        Width="500" Height="600" 
+        MinWidth="300" MinHeight="600"
+        x:Class="GameMaster.GUI.ConfigScreen"
+        Title="GameMaster: Configuration">
+  
+  <Window.Styles>
+    <Style Selector="TextBox">
+      <Setter Property="Margin" Value="2"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="Width" Value="120"/>
+      <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock">
+      <Setter Property="Margin" Value="2"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.header">
+      <Setter Property="Margin" Value="10 0"/>
+    </Style>
+
+    <Style Selector="Border">
+      <Setter Property="BorderBrush" Value="Black"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Margin" Value="2 0"/>
+    </Style>
+
+    <Style Selector="Grid">
+      <Setter Property="Margin" Value="10 1"/>
+    </Style>
+
+    <Style Selector="Button">
+      <Setter Property="Margin" Value="10 1"/>
+    </Style>
+
+  </Window.Styles>
+
+  <DockPanel Width="290" VerticalAlignment="Stretch">
+    
+  <StackPanel Margin="5" Spacing="5" DockPanel.Dock="Top">
+    <StackPanel>
+      <TextBlock Text="Connection" Classes="header" />
+      <Border>
+        <Grid ColumnDefinitions="120,Auto" RowDefinitions="*,*">
+          <TextBlock>IP</TextBlock>
+          <DataValidationErrors Grid.Column="1">
+            <TextBox x:Name="IPTextBox"></TextBox>
+          </DataValidationErrors>
+          <TextBlock Grid.Row="1">Port</TextBlock>
+          <TextBox x:Name="portTextBox" Grid.Row="1" Grid.Column="1"></TextBox>
+        </Grid>
+      </Border>
+    </StackPanel>
+
+    <StackPanel>
+      <TextBlock Text="Penalties" Classes="header" />
+      <Border>
+        <Grid ColumnDefinitions="120,Auto" RowDefinitions="*,*,*,*,*,*">
+          <TextBlock>Move</TextBlock>
+          <TextBox Grid.Column="1" x:Name="movePenaltyTextBox"/>
+
+          <TextBlock Grid.Row="1">Ask</TextBlock>
+          <TextBox Grid.Row="1" Grid.Column="1" x:Name="askPenaltyTextBox"/>
+
+          <TextBlock Grid.Row="2">Discover</TextBlock>
+          <TextBox Grid.Row="2" Grid.Column="1" x:Name="discoverPenaltyTextBox"/>
+
+          <TextBlock Grid.Row="3">Put</TextBlock>
+          <TextBox Grid.Row="3" Grid.Column="1" x:Name="putPenaltyTextBox"/>
+
+          <TextBlock Grid.Row="4">Check</TextBlock>
+          <TextBox Grid.Row="4" Grid.Column="1" x:Name="checkPenaltyTextBox"/>
+
+          <TextBlock Grid.Row="5">Respond</TextBlock>
+          <TextBox Grid.Row="5" Grid.Column="1" x:Name="respondPenaltyTextBox"/>
+        </Grid>
+      </Border>
+    </StackPanel>
+
+    <StackPanel>
+      <TextBlock Text="Grid"  Classes="header" />
+      <Border>
+        <Grid ColumnDefinitions="120,Auto" RowDefinitions="*,*,*,*,*,*">
+          <TextBlock>Width</TextBlock>
+          <TextBox x:Name="widthTextBox" Grid.Row="0" Grid.Column="1"/>
+
+          <TextBlock Grid.Row="1">Height</TextBlock>
+          <TextBox x:Name="heightTextBox" Grid.Row="1" Grid.Column="1"/>
+
+          <TextBlock Grid.Row="2">Goal area height</TextBlock>
+          <TextBox x:Name="goalHeightTextBox" Grid.Row="2" Grid.Column="1" />
+
+          <TextBlock Grid.Row="3">Number of goals</TextBlock>
+          <TextBox x:Name="goalsTextBox" Grid.Row="3" Grid.Column="1"/>
+
+          <TextBlock Grid.Row="4">Number of pieces</TextBlock>
+          <TextBox x:Name="piecesTextBox" Grid.Row="4" Grid.Column="1"/>
+
+          <TextBlock Grid.Row="5">Sham piece chance</TextBlock>
+          <TextBox x:Name="chanceShamTextBox" Grid.Row="6" Grid.Column="1"/>
+        </Grid>
+
+      </Border>
+    </StackPanel>
+  </StackPanel>
+
+
+    <Grid ColumnDefinitions="*,*" Margin="10" RowDefinitions="50" DockPanel.Dock="Bottom">
+      <Button x:Name="cancelButton" HorizontalAlignment="Stretch">Cancel</Button>
+      <Button x:Name="nextButton" Grid.Column="1" HorizontalAlignment="Stretch">Next</Button>
+    </Grid>
+  </DockPanel>
+
+</Window>

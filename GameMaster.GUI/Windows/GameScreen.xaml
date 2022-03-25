@@ -1,0 +1,86 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mycontrols="clr-namespace:GameMaster.GUI.Controls;assembly=GameMaster.GUI"
+        mc:Ignorable="d"
+        Width="600" Height="800"
+        MinWidth="500" MinHeight="300"
+        x:Class="GameMaster.GUI.GameScreen"
+        Title="GameMaster: Game">
+
+  <Window.Styles>
+
+    <Style Selector="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
+    <Style Selector="TextBlock.h1">
+      <Setter Property="FontSize" Value="22"/>
+      <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="Button">
+      <Setter Property="Margin" Value="10"/>
+    </Style>
+
+  </Window.Styles>
+  <Grid RowDefinitions="80,*">
+
+    <Grid ColumnDefinitions="*,200" RowDefinitions="80">
+      <Grid  Grid.Column="0" Grid.Row="0" ColumnDefinitions="*,*,*" RowDefinitions="50,30">
+        <TextBlock Classes="h1" FontSize="30" x:Name="redScoreTextBlock" Grid.Column="0">0</TextBlock>
+        <TextBlock Classes="h1" x:Name="timeTextBlock" Grid.Column="1">0:00</TextBlock>
+        <TextBlock Classes="h1" FontSize="30" x:Name="blueScoreTextBlock" Grid.Column="2">0</TextBlock>
+
+        <TextBlock TextAlignment="Center" Grid.Column="0" Grid.Row="1" Foreground="DarkRed">Team Red</TextBlock>
+        <TextBlock TextAlignment="Center" x:Name="timeLabelTextBlock" Grid.Column="1" Grid.Row="1">Time</TextBlock>
+        <TextBlock TextAlignment="Center" Grid.Column="2" Grid.Row="1" Foreground="DarkBlue">Team Blue</TextBlock>
+      </Grid>
+
+      <!-- Online player counters -->
+      <Border Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="0.5" Margin="5 0">
+        <Grid  RowDefinitions="*,*,*" ColumnDefinitions="*,*">
+          <Grid.Styles>
+            <Style Selector="TextBlock">
+              <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+          </Grid.Styles>
+          <TextBlock Grid.ColumnSpan="2" Text="Connected players"/>
+          <TextBlock Grid.Row="1" x:Name="redPlayersCount" Text="0"/>
+          <TextBlock Grid.Row="1" Grid.Column="1" x:Name="bluePlayersCount" Text="0"/>
+          <TextBlock Grid.Row="2" Text="Team Red" Foreground="DarkRed"/>
+          <TextBlock Grid.Row="2" Grid.Column="1" Text="Team Blue" Foreground="DarkBlue"/>
+        </Grid>
+
+      </Border>
+
+    </Grid>
+
+  <Grid Grid.Row="1" ColumnDefinitions="*,5,230">
+      <Border Background="WhiteSmoke" Margin="2" Grid.Column="0"   BorderBrush="Black" BorderThickness="1" >
+        <mycontrols:BoardCanvas x:Name="board" MinWidth="100" MinHeight="100"
+                                VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ClipToBounds="True"/>
+      </Border>
+
+      <GridSplitter Background="LightGray" Margin="0 2" Width="4"  Grid.Row="0" Grid.Column="1" />
+
+      <ListBox x:Name="colorsListBox" Grid.Column="2"  Margin="2"
+                   VerticalAlignment="Stretch">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid ColumnDefinitions="Auto,Auto" Margin="3">
+              <Border BorderThickness="1" BorderBrush="Black" Width="30" Height="30" Margin="5">
+                <Rectangle Fill="{Binding ItemColor}" Stretch="Fill"/>
+              </Border>
+              <TextBlock Grid.Column="1" Text="{Binding ItemDesc}" TextAlignment="Left" Margin="5" FontSize="15"/>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+
+    </Grid>
+  </Grid>
+
+</Window>

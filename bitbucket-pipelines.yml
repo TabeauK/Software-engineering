@@ -1,0 +1,43 @@
+# This is a sample build configuration for .NET Core.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: mcr.microsoft.com/dotnet/core/sdk:2.1
+
+pipelines:
+  default:    
+    - step:
+        caches:
+          - dotnetcore
+        script: 
+          - export UTILS=CommunicationUtils
+          - export UTILS_TEST=CommunicationUtils.Test
+          
+          - export CS=CommunicationServer
+          - export CS_TEST=CommunicationServer.Test
+          
+          - export GM=GameMaster
+          - export GM_TEST=GameMaster.Test
+          
+          - export AGENT=Player
+          - export AGENT_TEST=Player.Test
+          
+          - export GM_GUI=GameMaster.GUI
+          
+          - dotnet restore $UTILS
+          - dotnet restore $CS
+          - dotnet restore $GM
+          - dotnet restore $AGENT
+          - dotnet restore $GM_GUI
+          
+          - dotnet build $UTILS
+          - dotnet build $CS
+          - dotnet build $GM
+          - dotnet build $AGENT
+          - dotnet build $GM_GUI
+          
+          - dotnet test $UTILS_TEST
+          - dotnet test $CS_TEST
+          - dotnet test $GM_TEST
+          - dotnet test $AGENT_TEST

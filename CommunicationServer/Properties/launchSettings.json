@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CommunicationServer": {
+      "commandName": "Project",
+      "commandLineArgs": "5000 5001 true"
+    }
+  }
+}
